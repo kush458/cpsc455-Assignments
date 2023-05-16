@@ -132,14 +132,13 @@ nav input:checked ~ span:nth-child(3) {
 .formContainer {
     flex-grow: 1;
     display: flex;
-    align-items: center;
     justify-content: center;
     border-right: 2px solid #1c1d1c;
     margin-bottom: 2%;
 }
 
 .inventory {
-    flex-grow: 3;
+    flex-grow: 2;
     display: flex;
     flex-direction: column;
     align-items: center;

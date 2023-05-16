@@ -27,36 +27,18 @@
                     <form>
                         <p id="formTitle">Item Details</p>
                         <p id="formDesc">Kindly fill in the following details in order to add an item to the inventory.</p>
-                        <input type="text" id="itemName" placeholder="Item Name">
-                        <input type="number" id="itemPrice" placeholder="Item Price" step="0.1" min="0">
-                        <input type="url" id="itemImg" placeholder="Item Image (please enter a URL)">
-                        <input type="text" id="itemDesc" placeholder="Item Description">
+                        <input type="text" id="itemName" placeholder="Item Name" autocomplete="off" required>
+                        <input type="number" id="itemPrice" placeholder="Item Price" step="0.01" min="0" autocomplete="off">
+                        <input type="url" id="itemImg" placeholder="Item Image (please enter a URL)" autocomplete="off">
+                        <input type="text" id="itemDesc" placeholder="Item Description" autocomplete="off">
                         <div class="formButtonContainer">
-                            <button class="formButtons">Submit</button>
-                            <button class="formButtons">Clear all</button>
+                            <button type="submit" class="formButtons">Add Item</button>
+                            <button type="reset" class="formButtons">Clear all</button>
                         </div>
                     </form>
                 </div>
                 <div class="inventory">
-                    <div class="itemCard">
-                        <img src="../assets/favicon.png"/>
-                        <div class="infoContainer">
-                            <div class="nameAndPrice">
-                                <div class="topInfo">
-                                    <p>Item Name</p>
-                                    <p>inventory</p>
-                                </div>
-                                <div class="topInfo">
-                                    <p>Price</p>
-                                    <p>$12</p>
-                                </div>
-                            </div>
-                            <div class="topInfo">
-                                <p>Description</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- All items will render here. Done dynamically using JavaScript -->
                 </div>
             </div>
             <script src="../script.js"></script>
