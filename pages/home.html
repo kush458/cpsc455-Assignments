@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <title>Inventory App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../style.css" />
+        <link rel="icon" href="../assets/favicon.png">
+        <body>
+            <div class="navContainer">
+                <nav>
+                    <input type="checkbox"> <!--first child (1) of nav-->
+                    <span></span> <!--first child (2) of nav-->
+                    <span></span> <!--first child (3) of nav-->
+                    <div class="items">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </div>
+                </nav>
+            </div>
+            <div class="title">
+                <img src="../assets/favicon.png"/>
+                <p>Inventory App</p>
+            </div>
+            <div class="wrapper">
+                <div class="formContainer">
+                    <form>
+                        <p id="formTitle">Item Details</p>
+                        <p id="formDesc">Kindly fill in the following details in order to add an item to the inventory.</p>
+                        <input type="text" id="itemName" placeholder="Item Name">
+                        <input type="number" id="itemPrice" placeholder="Item Price" step="0.1" min="0">
+                        <input type="url" id="itemImg" placeholder="Item Image (please enter a URL)">
+                        <input type="text" id="itemDesc" placeholder="Item Description">
+                        <div class="formButtonContainer">
+                            <button class="formButtons">Submit</button>
+                            <button class="formButtons">Clear all</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="inventory">
+                    <div class="itemCard">
+                        <img src="../assets/favicon.png"/>
+                        <div class="infoContainer">
+                            <div class="nameAndPrice">
+                                <div class="topInfo">
+                                    <p>Item Name</p>
+                                    <p>inventory</p>
+                                </div>
+                                <div class="topInfo">
+                                    <p>Price</p>
+                                    <p>$12</p>
+                                </div>
+                            </div>
+                            <div class="topInfo">
+                                <p>Description</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="../script.js"></script>
+        </body>
+    </head>
+</html>
