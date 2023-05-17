@@ -3,13 +3,13 @@
       "name": "Puppy",
       "price": 100000.0,
       "imageURL": "https://www.vets4pets.com/siteassets/species/dog/puppy/labrador-puppy-happy.jpg?w=585&scale=down",
-      "description": "Cutest puppy ever!"
+      "description": "Cutest puppy ever! Puppies, with their adorable faces, wiggling tails, and playful antics, are the epitome of pure joy and innocence."
     },
     {
       "name": "Kitten",
-      "price": 999999.9,
+      "price": 999999.99,
       "imageURL": "https://images.unsplash.com/photo-1615789591457-74a63395c990?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9tZXN0aWMlMjBjYXR8ZW58MHx8MHx8&w=1000&q=80",
-      "description": "Cutest kitten ever!"
+      "description": "Cutest kitten ever! Kittens are undoubtedly one of the most adorable and lovable creatures on this planet. With their fluffy fur, tiny paws, and innocent eyes, they captivate our hearts and bring immense joy to our lives."
     },
     {
       "name": "Pizza",

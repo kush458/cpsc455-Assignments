@@ -13,8 +13,8 @@
                     <span></span> <!--first child (2) of nav-->
                     <span></span> <!--first child (3) of nav-->
                     <div class="items">
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="#home.html">Home</a></li>
+                        <li><a href="#about.html">About</a></li>
                     </div>
                 </nav>
             </div>
@@ -24,21 +24,22 @@
             </div>
             <div class="wrapper">
                 <div class="formContainer">
-                    <form>
+                    <form id="itemForm">
                         <p id="formTitle">Item Details</p>
                         <p id="formDesc">Kindly fill in the following details in order to add an item to the inventory.</p>
                         <input type="text" id="itemName" placeholder="Item Name" autocomplete="off" required>
-                        <input type="number" id="itemPrice" placeholder="Item Price" step="0.01" min="0" autocomplete="off">
-                        <input type="url" id="itemImg" placeholder="Item Image (please enter a URL)" autocomplete="off">
-                        <input type="text" id="itemDesc" placeholder="Item Description" autocomplete="off">
+                        <input type="number" id="itemPrice" placeholder="Item Price" step="0.01" min="0" autocomplete="off" required>
+                        <input type="url" id="itemImg" placeholder="Item Image (please enter a URL)" autocomplete="off" required>
+                        <input type="text" id="itemDesc" placeholder="Item Description" autocomplete="off" required>
                         <div class="formButtonContainer">
-                            <button type="submit" class="formButtons">Add Item</button>
-                            <button type="reset" class="formButtons">Clear all</button>
+                            <button type="submit" id="addItemButton" class="formButtons">Add Item</button>
+                            <button id="clearAllButton" class="formButtons">Clear all</button>
                         </div>
                     </form>
                 </div>
                 <div class="inventory">
                     <!-- All items will render here. Done dynamically using JavaScript -->
+                    <input type="text" id="searchInput" placeholder="Search...🔍">
                 </div>
             </div>
             <script src="../script.js"></script>
