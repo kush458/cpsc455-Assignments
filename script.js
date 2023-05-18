@@ -89,12 +89,22 @@ const search = (event) => {
     }
 }
 
+const deleteAllCards = () => {
+    const itemCards = document.getElementsByClassName('itemCard');
+    
+    while (itemCards.length > 0) {
+        itemCards[itemCards.length - 1].remove();
+    }
+}
+
 const itemForm = document.getElementById('itemForm');
 const clearAllBtn = document.getElementById('clearAllButton');
 const searchInput = document.getElementById('searchInput');
+const deleteAllBtn = document.getElementById('deleteAllButton');
 
 itemForm.addEventListener('submit', handleOnSubmit);
 searchInput.addEventListener('input', search);
+deleteAllBtn.addEventListener('click', deleteAllCards);
 clearAllBtn.addEventListener('click', () => {
     itemForm.reset();
 });

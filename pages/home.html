@@ -13,8 +13,8 @@
                     <span></span> <!--first child (2) of nav-->
                     <span></span> <!--first child (3) of nav-->
                     <div class="items">
-                        <li><a href="#home.html">Home</a></li>
-                        <li><a href="#about.html">About</a></li>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
                     </div>
                 </nav>
             </div>
@@ -36,10 +36,13 @@
                             <button id="clearAllButton" class="formButtons">Clear all</button>
                         </div>
                     </form>
+                    <button id="deleteAllButton">Delete All Cards</button>
                 </div>
                 <div class="inventory">
                     <!-- All items will render here. Done dynamically using JavaScript -->
-                    <input type="text" id="searchInput" placeholder="Search...🔍">
+                    <div class="searchBar">
+                        <input type="text" id="searchInput" placeholder="Search...🔍">
+                    </div>
                 </div>
             </div>
             <script src="../script.js"></script>
