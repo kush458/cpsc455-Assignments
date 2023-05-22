@@ -4,48 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <head>
-        <link rel="stylesheet" type="text/css" href="../style.css" />
+        <link rel="stylesheet" type="text/css" href="../aboutStyle.css" />
         <link rel="icon" href="../assets/favicon.png">
-        <body>
-            <div class="navContainer">
-                <nav>
-                    <input type="checkbox"> <!--first child (1) of nav-->
-                    <span></span> <!--first child (2) of nav-->
-                    <span></span> <!--first child (3) of nav-->
-                    <div class="items">
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </div>
-                </nav>
-            </div>
-            <div class="title">
+        <body class="wrapper">
+            <header class="header">
                 <img src="../assets/favicon.png"/>
                 <p>Inventory App</p>
-            </div>
-            <div class="wrapper">
-                <div class="formContainer">
-                    <form id="itemForm">
-                        <p id="formTitle">Item Details</p>
-                        <p id="formDesc">Kindly fill in the following details in order to add an item to the inventory.</p>
-                        <input type="text" id="itemName" placeholder="Item Name" autocomplete="off" required>
-                        <input type="number" id="itemPrice" placeholder="Item Price" step="0.01" min="0" autocomplete="off" required>
-                        <input type="url" id="itemImg" placeholder="Item Image (please enter a URL)" autocomplete="off" required>
-                        <input type="text" id="itemDesc" placeholder="Item Description" autocomplete="off" required>
-                        <div class="formButtonContainer">
-                            <button type="submit" id="addItemButton" class="formButtons">Add Item</button>
-                            <button id="clearAllButton" class="formButtons">Clear all</button>
-                        </div>
-                    </form>
-                    <button id="deleteAllButton">Delete All Cards</button>
-                </div>
-                <div class="inventory">
-                    <!-- All items will render here. Done dynamically using JavaScript -->
-                    <div class="searchBar">
-                        <input type="text" id="searchInput" placeholder="Search...🔍">
-                    </div>
-                </div>
-            </div>
-            <script src="../script.js"></script>
+            </header>
         </body>
     </head>
 </html>

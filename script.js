@@ -15,7 +15,7 @@ const renderInitData = () => {
                     <div class="infoContainer">
                         <div class="nameAndPrice">
                             <div class="topInfo">
-                                <p>Item Name</p>
+                                <p>Name</p>
                                 <p class="itemName">${item.name}</p>
                             </div>
                             <div class="topInfo">
@@ -54,7 +54,7 @@ const handleOnSubmit = (event) => {
         <div class="infoContainer">
             <div class="nameAndPrice">
                 <div class="topInfo">
-                    <p>Item Name</p>
+                    <p>Name</p>
                     <p class="itemName">${itemName}</p>
                 </div>
                 <div class="topInfo">
