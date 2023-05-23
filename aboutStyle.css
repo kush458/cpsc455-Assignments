@@ -1,0 +1,435 @@
+.wrapper {
+    display: flex;  
+    flex-flow: row wrap;
+    background-color: #1c1d1c;
+    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* 
+    Flex-grow: dictates the amount of space the item should take up with other elements
+    Flex-shrink: How much the element should shrink if necessary
+    Flex-basis: sets the initial main size of the item
+*/
+
+.wrapper > * {
+    padding: 10px;
+    flex: 1 100%; /* ensures child element spans 100% of container*/
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    width: 70px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.header p {
+    color: aliceblue;
+    font-size: 2rem;
+}
+
+.inventory {
+    display: flex;
+    background: #1c1d1c;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aside-1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: #1c1d1c;
+}
+
+/* Nav Bar (modified from https://codepen.io/dmendozaec/pen/vwjRvw) */
+.navContainer {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #252425;
+    padding: 10px;
+    transition: 0.5s;
+    border-radius: 50px;
+    overflow: hidden;
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+nav input {
+    height: 45px;
+    width: 45px;
+    opacity: 0;    
+}
+
+nav span {
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.items {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    overflow: hidden; /* if content children overflow the div box then hide them*/
+    transition: 0.5s;
+    flex-direction: row;
+}
+
+/* input:checked selects checked inputs within nav,
+   after that ~ selector selects all elements with
+   class .items preceded by an input having the same parent.
+*/
+nav input:checked ~ .items {
+    width: 200px;
+}
+
+.items li {
+    list-style: none;
+    /* top and bottom | left and right */
+    margin: 0 20px;
+}
+
+.items li a {
+    text-decoration: none;
+    color: aliceblue;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.items li a:hover {
+    color: #2f81f7;
+}
+
+nav input:checked ~ span {
+    background-color: #2f81f7;
+}
+
+/* selects a span element that is the 2nd child of it's parent (nav in this case) */
+/* so essentially select the very first span element under nav since it's the second child */
+nav span:nth-child(2) {
+    transform: translateY(-8px);
+}
+
+/* If input under nav is checked then rotate this span element*/
+nav input:checked ~ span:nth-child(2) {
+    transform: translateY(0) rotate(-45deg);
+}
+
+/* selects a span element that is the 3rd child of it's parent (nav in this case) */
+/* so essentially select the second span element under nav since it's the second child */
+nav span:nth-child(3) {
+    transform: translateY(8px);
+}
+
+nav input:checked ~ span:nth-child(3) {
+    transform: translateY(0) rotate(45deg);
+}
+
+/* Form */
+form {
+    background-color: #252425;
+    margin: 0;
+    padding: 0;
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#formTitle {
+    color: aliceblue;
+    font-weight: 500;
+    font-size: calc(18px + 0.390625vw);;
+    margin-bottom: 0px;
+}
+
+#formDesc {
+    color: rgb(185, 187, 188);
+    margin-top: 4px;
+    font-size: calc(10px + 0.390625vw);
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #313335;
+    height: 5%;
+    color: rgb(185, 187, 188);
+    outline: none;
+    font-size: calc(10px + 0.390625vw);
+    margin-bottom: 5%;
+}
+
+input:focus {
+    border: 2px solid #2f81f7;
+    outline: none;
+}
+
+.formButtonContainer {
+    display: flex;
+    width: 96%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.formButtons {
+    color: aliceblue;
+    font-size: calc(9px + 0.390625vw);
+    background-color: #2f81f7;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    transition: 0.2s;
+    width: 48%;
+    height: 1.8rem;
+}
+
+.formButtons:active {
+    opacity: 70%;
+}
+
+#deleteAllButton {
+    color: #f85149;
+    font-size: calc(9px + 0.390625vw);
+    font-weight: 500;
+    background-color: #252425;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 13px;
+    padding-right: 13px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgba(240, 246, 0252, 0.1);
+    transition: 0.2s;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#deleteAllButton:hover {
+    background-color: #f85149;
+    color: aliceblue;
+}
+
+#deleteButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f85149;
+    font-size: calc(9px + 0.390625vw);
+    font-weight: 500;
+    background-color: #252425;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgba(240, 246, 0252, 0.1);
+    transition: 0.2s;
+    text-align: center;
+}
+
+/* Search Bar */
+.searchBar {
+    display: flex;
+    width: 70%;
+    height: 3em;
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    background-color: #252425;
+    border-radius: 50px;
+    margin-bottom: 2.5%;
+    align-items: center;
+    transition: 0.1s;
+}
+
+#searchInput {
+    margin: 0;
+    background-color: #252425;
+    font-size: calc(11px + 0.390625vw);
+    border: none;
+    margin-left: 1em;
+}
+
+#searchInput:focus {
+    outline: none;
+}
+
+.searchBar:focus-within {
+    border: 2px solid #2f81f7;
+}
+
+/* Item Card */
+.itemCard {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+    max-height: 35vh;
+    width: 50vw;
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    background-color: #252425;
+    border-radius: 15px;
+    margin-bottom: 2.5%;
+}
+
+.itemCard img {
+    height: auto;
+    max-width: 25%;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    object-fit: cover;
+}
+
+.infoContainer {
+    flex-direction: column;
+    margin-left: 2.5%;
+    margin-right: 1%;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.nameAndPrice {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+}
+
+.topInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    margin-right: 5%;
+}
+
+.topInfo p:nth-child(1) {
+    font-size: calc(15px + 0.390625vw);
+    font-weight: 500;
+    color: aliceblue;
+    margin: 0;
+}
+
+.topInfo p:nth-child(2) {
+    font-size: calc(10px + 0.390625vw);
+    color: rgb(185, 187, 188);
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.infoText {
+    color: aliceblue;
+    font-size: calc(17px + 0.390625vw);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@media all and (min-width: 300px) and (max-width: 530px) {
+    .aside { flex: 1 0 0; }
+    .itemCard {
+        width: 82vw;
+    }
+    form {
+        width: 60vw;
+    }
+    .searchBar {
+        width: 88vw;
+    }
+    .navContainer {
+        top: 88%;
+        left: 10px;
+    }
+    nav {
+        border: 2px solid #2f81f7;
+    }
+    nav input {
+        height: 30px;
+        width: 30px;
+        opacity: 0;    
+    }
+    nav span {
+        left: 14px;
+    }
+    .topInfo p:nth-child(1) {
+        font-size: calc(13px + 0.390625vw);
+    }
+    .topInfo p:nth-child(2) {
+        font-size: calc(9px + 0.390625vw);
+    } 
+}
+
+@media all and (min-width: 530px) and (max-width: 650px) {
+    .aside { flex: 1 0 0; }
+    .itemCard {
+        width: 82vw;
+    }
+    form {
+        width: 45vw;
+    }
+    .searchBar {
+        width: 88vw;
+    }
+}
+
+@media all and (min-width: 650px) and (max-width: 900px) {
+    .aside { flex: 1 0 0; }
+    .itemCard {
+        width: 80vw;
+    }
+    form {
+        width: 35vw;
+    }
+    .searchBar {
+        width: 88vw;
+    }
+}
+
+@media all and (min-width: 900px) {
+    .aside { flex: 1 0 0; }
+    .inventory    { flex: 2 0px; }
+    .aside-1 { order: 1; } 
+    .inventory    { order: 2; }
+    .navContainer {
+        top: 20px;
+        left: 20px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    .inventory    { flex: 3 0px; }
+    .aside-1 { order: 1; } 
+    .inventory    { order: 2; }
+}
