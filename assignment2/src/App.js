@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Form from './components/form';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <body className='wrapper'>
+      <header class="header">
+          <img src={require('./assets/favicon.png')} alt='logo'/>
+          <p>Inventory App</p>
       </header>
-    </div>
+      <aside class="aside aside-1">
+          <Form />
+      </aside>
+      <div class="inventory">
+          <div class="searchBar">
+              <input type="text" id="searchInput" placeholder="Search...🔍"/>
+          </div>
+      </div>
+    </body>
   );
 }
 
