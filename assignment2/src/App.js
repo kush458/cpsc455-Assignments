@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Form from './components/form';
+import Inventory from './components/inventory';
 
 function App() {
   return (
@@ -12,11 +13,7 @@ function App() {
       <aside class="aside aside-1">
           <Form />
       </aside>
-      <div class="inventory">
-          <div class="searchBar">
-              <input type="text" id="searchInput" placeholder="Search...🔍"/>
-          </div>
-      </div>
+      <Inventory />
     </body>
   );
 }
