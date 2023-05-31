@@ -1,31 +1,30 @@
 import React from "react";
 
 import { useSelector } from 'react-redux';
+import SearchBar from "./search";
 
 const Inventory = (props) => {
 
     const items = useSelector(state => state.items.item_list);
 
     return (
-        <div class="inventory">
-            <div class="searchBar">
-                <input type="text" id="searchInput" placeholder="Search...🔍"/>
-            </div>
+        <div className="inventory">
+            <SearchBar />
             {items && items.map((item) => 
-                <div className="itemCard">
+                <div key={item.name} className="itemCard">
                     <img key={item.name} src={item.imageURL} alt={item.name}/>
-                    <div key={item.name} class="infoContainer">
-                        <div key={item.name} class="nameAndPrice">
-                            <div key={item.name} class="topInfo">
+                    <div key={item.name} className="infoContainer">
+                        <div key={item.name} className="nameAndPrice">
+                            <div key={item.name} className="topInfo">
                                 <p>Name</p>
-                                <p class="itemName">{item.name}</p>
+                                <p className="itemName">{item.name}</p>
                             </div>
-                            <div key={item.name} class="topInfo">
+                            <div key={item.name} className="topInfo">
                                 <p>Price</p>
                                 <p>${item.price}</p>
                             </div>
                         </div>
-                        <div key={item.name} class="topInfo">
+                        <div key={item.name} className="topInfo">
                             <p>Description</p>
                             <p>{item.description}</p>
                         </div>

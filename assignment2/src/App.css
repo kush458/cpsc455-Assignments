@@ -421,7 +421,7 @@ input:focus {
 @media all and (min-width: 900px) {
   .aside { flex: 1 0 0; }
   .inventory    { flex: 2 0px; }
-  .aside-1 { order: 1; } 
+  .aside-1 { order: 1; }
   .inventory    { order: 2; }
   .navContainer {
       top: 20px;
