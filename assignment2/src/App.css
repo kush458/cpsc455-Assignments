@@ -263,6 +263,11 @@ input:focus {
   text-align: center;
 }
 
+#deleteButton:active {
+  background-color: #f85149;
+  color: aliceblue;
+}
+
 /* Search Bar */
 .searchBar {
   display: flex;
@@ -361,6 +366,21 @@ input:focus {
   font-size: calc(17px + 0.390625vw);
   margin-left: 5%;
   margin-right: 5%;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
 }
 
 @media all and (min-width: 300px) and (max-width: 530px) {
