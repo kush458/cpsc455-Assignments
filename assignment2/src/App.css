@@ -305,6 +305,11 @@ input:focus {
   background-color: #252425;
   border-radius: 15px;
   margin-bottom: 2.5%;
+  transition: 0.2s;
+}
+
+.itemCard:active {
+  opacity: 60%;
 }
 
 .itemCard img {

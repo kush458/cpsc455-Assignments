@@ -33,21 +33,10 @@ const itemSlice = createSlice({
         deleteAllItems: (state, action) => {
             state.item_list.length = 0;
         },
-        search: (state, action) => {
-            const searchTerm = action.payload.toLowerCase();
-
-            if (action.payload === '') {
-                return INIT_STATE;
-            } else {
-                state.item_list = state.item_list.filter(item =>
-                    item.name.toLowerCase().includes(searchTerm)
-                );          
-            }
-        }
     },
 })
 
 // create slice automatically creates an item that corresponds to a reducer
-export const { addItem, deleteAllItems, search } = itemSlice.actions;
+export const { addItem, deleteAllItems } = itemSlice.actions;
 
 export default itemSlice.reducer;

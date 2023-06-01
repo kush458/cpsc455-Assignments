@@ -20,8 +20,6 @@ const Form = (props) => {
         dispatch(addItem(itemInfo));
 
         setItemInfo(initialState);
-
-        window.scrollTo(0, document.documentElement.scrollHeight);
     }
 
     const clearAll = () => {

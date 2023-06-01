@@ -1,35 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSelector } from 'react-redux';
-import SearchBar from "./search";
+import ItemCard from "./item";
 
 const Inventory = (props) => {
-
+    const [searchTerm, setSearchTerm] = useState('');
     const items = useSelector(state => state.items.item_list);
+    const [filteredItems, setFilteredItems] = useState(items);
+
+    useEffect(() => {
+        /**
+         * remember that you cannot directly modify a variable here like items! first of all because, react doesn't preserve the value
+         * of variables over time in successive re-renders and secondly and more importantly, modifying items does not trigger a 
+         * re-render!!! because it is a variable so no UI changes will be relfected! This happens because directly modifying items
+         * doesn't change the reference to the variable items and hence react thinks that it is unchanged where as state update functions
+         * with the help of useState actually return a new reference due to which React re-renders the components and that is why 
+         * this approach with filteredItems works!
+         */
+        const filtered = items.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        setFilteredItems(filtered);
+
+    }, [searchTerm, items]);
 
     return (
         <div className="inventory">
-            <SearchBar />
-            {items && items.map((item) => 
-                <div key={item.name} className="itemCard">
-                    <img key={item.name} src={item.imageURL} alt={item.name}/>
-                    <div key={item.name} className="infoContainer">
-                        <div key={item.name} className="nameAndPrice">
-                            <div key={item.name} className="topInfo">
-                                <p>Name</p>
-                                <p className="itemName">{item.name}</p>
-                            </div>
-                            <div key={item.name} className="topInfo">
-                                <p>Price</p>
-                                <p>${item.price}</p>
-                            </div>
-                        </div>
-                        <div key={item.name} className="topInfo">
-                            <p>Description</p>
-                            <p>{item.description}</p>
-                        </div>
-                    </div>
-                </div>
+            <div className="searchBar">
+                <input type="text" id="searchInput" value={searchTerm} placeholder="Search...🔍" onChange={(e) => setSearchTerm(e.target.value)}/>
+            </div>
+            {filteredItems && filteredItems.map((item) => 
+                <ItemCard 
+                    name={item.name}
+                    price={item.price}
+                    imageURL={item.imageURL}
+                    description={item.description}    
+                />
             )}
         </div>
     );
