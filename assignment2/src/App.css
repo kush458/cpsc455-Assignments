@@ -154,6 +154,7 @@ nav input:checked ~ span:nth-child(3) {
 
 /* Form */
 form {
+  position: relative;
   background-color: #252425;
   margin: 0;
   padding: 0;
@@ -300,6 +301,7 @@ input:focus {
 
 /* Item Card */
 .itemCard {
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-shrink: 1;
@@ -381,6 +383,7 @@ input:focus {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease-in-out;
+  z-index: 99999;
 }
 
 @media all and (min-width: 300px) and (max-width: 530px) {

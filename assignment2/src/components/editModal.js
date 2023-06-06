@@ -1,0 +1,71 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { editItem } from "../redux/items/reducer";
+
+const EditModal = (props) => {
+    const item = useSelector(state => state.items.item_list[props.itemIndex]);
+    const dispatch = useDispatch();
+
+    const initialState = item ? {
+        name: item.name,
+        price: item.price,
+        imageURL: item.imageURL,
+        description: item.description,
+    } : {
+        name: '',
+        price: '',
+        imageURL: '',
+        description: '',
+    }
+
+    const [itemInfo, setItemInfo] = useState(initialState);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("ITEM: ----" + props.itemIndex);
+        const payload = {
+            index: props.itemIndex,
+            item: itemInfo
+        }
+        dispatch(editItem(payload));
+
+        props.setViewForm(false);
+    }
+
+    const resetForm = (event) => {
+        event.preventDefault();
+        setItemInfo(initialState);
+    }
+
+    return (
+        props.viewForm ? (
+            <div className="modal">
+                <form id="itemForm" style={{width: "20vw"}} onSubmit={handleSubmit}>
+                    <p id="formTitle">Edit Item</p>
+                    <p id="formDesc">You have the freedom to edit and item! This form is for editing the {props.name} item</p>
+                    <input type="text" id="itemName" placeholder="Item Name" autoComplete='off' value={itemInfo.name} onChange={(e) => {
+                        setItemInfo({...itemInfo, name: e.target.value});
+                    }} required/>
+                    <input type="number" id="itemPrice" placeholder="Item Price" step="0.01" min="0" autoComplete="off" value={itemInfo.price} onChange={(e) => {
+                        setItemInfo({...itemInfo, price: e.target.value});
+                    }} required/>
+                    <input type="url" id="itemImg" placeholder="Item Image (please enter a URL)" autoComplete="off" value={itemInfo.imageURL} onChange={(e) => {
+                        setItemInfo({...itemInfo, imageURL: e.target.value});
+                    }} required/>
+                    <input type="text" id="itemDesc" placeholder="Item Description" autoComplete="off" value={itemInfo.description} onChange={(e) => {
+                        setItemInfo({...itemInfo, description: e.target.value});
+                    }} required/>
+                    <div className="formButtonContainer">
+                        <button type="submit" id="addItemButton" className="formButtons">Confirm Edit</button>
+                        <button id="clearAllButton" className="formButtons" onClick={resetForm}>Reset</button>
+                    </div>
+                    <button id="deleteButton" onClick={() => props.setViewForm(false)}>X</button>
+                </form>
+            </div>
+        ) : (
+            <></>
+        )
+    );
+}
+
+export default EditModal;

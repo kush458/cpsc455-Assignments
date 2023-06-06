@@ -33,10 +33,16 @@ const itemSlice = createSlice({
         deleteAllItems: (state, action) => {
             state.item_list.length = 0;
         },
+        editItem: (state, action) => {
+            const idx = action.payload.index;
+            const modItem = action.payload.item;
+            
+            state.item_list[idx] = modItem;
+        }
     },
 })
 
 // create slice automatically creates an item that corresponds to a reducer
-export const { addItem, deleteAllItems } = itemSlice.actions;
+export const { addItem, deleteAllItems, editItem } = itemSlice.actions;
 
 export default itemSlice.reducer;

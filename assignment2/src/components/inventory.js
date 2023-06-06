@@ -27,12 +27,14 @@ const Inventory = (props) => {
             <div className="searchBar">
                 <input type="text" id="searchInput" value={searchTerm} placeholder="Search...🔍" onChange={(e) => setSearchTerm(e.target.value)}/>
             </div>
-            {filteredItems && filteredItems.map((item) => 
+            {filteredItems && filteredItems.map((item, i) => 
                 <ItemCard 
                     name={item.name}
                     price={item.price}
                     imageURL={item.imageURL}
-                    description={item.description}    
+                    description={item.description} 
+                    itemIndex={i}
+                    searching={searchTerm}   
                 />
             )}
         </div>
