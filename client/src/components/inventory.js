@@ -36,6 +36,7 @@ const Inventory = (props) => {
             {filteredItems && filteredItems.map((item, i) => 
                 <ItemCard 
                     key={i}
+                    itemId={item.id}
                     name={item.name}
                     price={item.price}
                     imageURL={item.imageURL}

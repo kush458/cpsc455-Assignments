@@ -4,7 +4,7 @@ const { v4: uuid } = require('uuid');
 
 let item_list = [
     {
-        "id": uuid(),
+        "id": "id1",
         "name": "Puppy",
         "price": 100000.0,
         "imageURL": "https://www.vets4pets.com/siteassets/species/dog/puppy/labrador-puppy-happy.jpg?w=585&scale=down",
@@ -36,6 +36,9 @@ router.get('/', (req, res, next) => {
 
 });
 
+/**
+ * CREATE an item
+ */
 router.post('/', (req, res, next) => {
 
   const item = {id: uuid(), ...req.body};
@@ -45,13 +48,30 @@ router.post('/', (req, res, next) => {
 
 });
 
+
+/**
+ * DELETE an item
+ */
 router.delete('/:itemId', (req, res, next) => {
 
   const id = req.params.itemId;
 
   item_list = item_list.filter(item => item.id !== id);
 
-  res.status(204).send('');
+  res.status(204).send({});
+})
+
+/**
+ * UPDATE an item
+ */
+router.patch('/:itemId', (req, res, next) => {
+  const id = req.params.itemId;
+
+  var itemIdx = item_list.findIndex(item => item.id === id);
+
+  item_list[itemIdx] = {...item_list[itemIdx], ...req.body};
+
+  res.status(200).send(item_list[itemIdx]);
 })
 
 module.exports = router;

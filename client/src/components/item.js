@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import Modal from "./modal";
 import EditModal from "./editModal";
+import { useDispatch } from "react-redux";
+import { deleteItemAsync } from "../redux/items/thunks";
 
 const ItemCard = (props) => {
     const [visible, setVisible] = useState(false);
     const [viewForm, setViewForm] = useState(false);
+    const dispatch = useDispatch();
+
+    const handleDelete = () => {
+        dispatch(deleteItemAsync(props.itemId));
+    }
     
     return (
         <>
@@ -59,6 +66,7 @@ const ItemCard = (props) => {
                         <></>
                     ) 
                 }
+                <button style={{right: "50px"}} id="deleteButton" onClick={handleDelete}>🗑️</button>
             </div>
             <Modal
                 name={props.name}
@@ -71,6 +79,7 @@ const ItemCard = (props) => {
             <EditModal 
                 viewForm={viewForm}
                 name={props.name}
+                itemId={props.itemId}
                 itemIndex={props.itemIndex}
                 setViewForm={setViewForm}
             />

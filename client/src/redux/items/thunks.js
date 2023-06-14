@@ -14,4 +14,18 @@ export const addItemAsync = createAsyncThunk(
     async (item) => {
         return await ItemService.addItem(item);
     }
+);
+
+export const deleteItemAsync = createAsyncThunk(
+    actionTypes.DELETE_ITEM,
+    async (itemId) => {
+        return await ItemService.deleteItem(itemId);
+    }
+);
+
+export const editItemAsync = createAsyncThunk(
+    actionTypes.EDIT_ITEM,
+    async (item) => {
+        return await ItemService.editItem(item);
+    }
 )

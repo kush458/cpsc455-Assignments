@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { addItemAsync, getItemsAsync } from "./thunks";
+import { addItemAsync, deleteItemAsync, editItemAsync, getItemsAsync } from "./thunks";
 import { REQUEST_STATE } from "../utils";
 
 const INIT_STATE = {
     item_list: [],
     getItems: REQUEST_STATE.IDLE,
     addItem: REQUEST_STATE.IDLE,
+    deleteItem: REQUEST_STATE.IDLE,
     error: null,
 }
 
@@ -50,6 +51,32 @@ const itemSlice = createSlice({
             })
             .addCase(addItemAsync.rejected, (state, action) => {
                 state.addItem = REQUEST_STATE.REJECETD;
+                state.error = action.error;
+            })
+            .addCase(deleteItemAsync.pending, (state) => {
+                state.deleteItem = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(deleteItemAsync.fulfilled, (state, action) => {
+                state.deleteItem = REQUEST_STATE.FULFILLED;
+                state.item_list = state.item_list.filter(item => item.id !== action.payload);
+            })
+            .addCase(deleteItemAsync.rejected, (state, action) => {
+                state.deleteItem = REQUEST_STATE.REJECETD;
+                state.error = action.error;
+            })
+            .addCase(editItemAsync.pending, (state) => {
+                state.getItems = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(editItemAsync.fulfilled, (state, action) => {
+                state.getItems = REQUEST_STATE.FULFILLED;
+
+                const idx = state.item_list.findIndex(item => item.id === action.payload.id);
+                state.item_list[idx] = action.payload;
+            })
+            .addCase(editItemAsync.rejected, (state, action) => {
+                state.getItems = REQUEST_STATE.REJECETD;
                 state.error = action.error;
             })
     },

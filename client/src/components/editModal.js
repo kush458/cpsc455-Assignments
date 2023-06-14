@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editItem } from "../redux/items/reducer";
+import { editItemAsync } from "../redux/items/thunks";
 
 const EditModal = (props) => {
     const item = useSelector(state => state.items.item_list[props.itemIndex]);
@@ -22,13 +23,7 @@ const EditModal = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("ITEM: ----" + props.itemIndex);
-        const payload = {
-            index: props.itemIndex,
-            item: itemInfo
-        }
-        dispatch(editItem(payload));
-
+        dispatch(editItemAsync({id: props.itemId, item: itemInfo}));
         props.setViewForm(false);
     }
 
