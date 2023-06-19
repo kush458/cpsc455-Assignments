@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { addItemAsync, deleteItemAsync, editItemAsync, getItemsAsync } from "./thunks";
+import { addItemAsync, deleteItemAsync, editItemAsync, getItemsAsync, sortItemsAsync } from "./thunks";
 import { REQUEST_STATE } from "../utils";
 
 const INIT_STATE = {
@@ -7,6 +7,8 @@ const INIT_STATE = {
     getItems: REQUEST_STATE.IDLE,
     addItem: REQUEST_STATE.IDLE,
     deleteItem: REQUEST_STATE.IDLE,
+    editItem: REQUEST_STATE.IDLE,
+    sortItem: REQUEST_STATE.IDLE,
     error: null,
 }
 
@@ -66,17 +68,29 @@ const itemSlice = createSlice({
                 state.error = action.error;
             })
             .addCase(editItemAsync.pending, (state) => {
-                state.getItems = REQUEST_STATE.PENDING;
+                state.editItem = REQUEST_STATE.PENDING;
                 state.error = null;
             })
             .addCase(editItemAsync.fulfilled, (state, action) => {
-                state.getItems = REQUEST_STATE.FULFILLED;
+                state.editItem = REQUEST_STATE.FULFILLED;
 
                 const idx = state.item_list.findIndex(item => item.id === action.payload.id);
                 state.item_list[idx] = action.payload;
             })
             .addCase(editItemAsync.rejected, (state, action) => {
-                state.getItems = REQUEST_STATE.REJECETD;
+                state.editItem = REQUEST_STATE.REJECETD;
+                state.error = action.error;
+            })
+            .addCase(sortItemsAsync.pending, (state) => {
+                state.sortItem = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(sortItemsAsync.fulfilled, (state, action) => {
+                state.sortItem = REQUEST_STATE.FULFILLED;
+                state.item_list = action.payload;
+            })
+            .addCase(sortItemsAsync.rejected, (state, action) => {
+                state.sortItem = REQUEST_STATE.REJECETD;
                 state.error = action.error;
             })
     },

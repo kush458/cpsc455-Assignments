@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
-
+import { BsCheck2 } from 'react-icons/bs';
+import Chip from '@mui/material/Chip';
 import { useDispatch, useSelector } from 'react-redux';
 import ItemCard from "./item";
-import { getItemsAsync } from "../redux/items/thunks";
+import { getItemsAsync, sortItemsAsync } from "../redux/items/thunks";
 
 const Inventory = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const items = useSelector(state => state.items.item_list);
     const [filteredItems, setFilteredItems] = useState(items);
+    const [sortByPrice, setSortByPrice] = useState(false);
+    const [sortByName, setSortByName] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getItemsAsync());
-    }, []);
+        if (!sortByPrice && !sortByName) {
+            dispatch(getItemsAsync());
+        }
+    }, [sortByPrice, sortByName]);
 
     useEffect(() => {
         /**
@@ -28,10 +33,46 @@ const Inventory = (props) => {
 
     }, [searchTerm, items]);
 
+    const handleSort = (criterion) => {
+        dispatch(sortItemsAsync(criterion));
+    }
+
     return (
         <div className="inventory">
-            <div className="searchBar">
-                <input type="text" id="searchInput" value={searchTerm} placeholder="Search...🔍" onChange={(e) => setSearchTerm(e.target.value)}/>
+            <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center',
+                width: '70%',
+                marginBottom: '1.5%',
+            }}>
+                <div className="searchBar">
+                    <input type="text" id="searchInput" value={searchTerm} placeholder="Search...🔍" onChange={(e) => setSearchTerm(e.target.value)}/>
+                </div>
+                <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <Chip 
+                        label="sort by price"
+                        onClick={() => {
+                            setSortByPrice(!sortByPrice);
+                            handleSort('price');
+                        }}
+                        icon={sortByPrice ? <BsCheck2 color="white" /> : <></>}
+                        disabled={sortByName ? true : false}
+                        style={{color: 'white', border: "1px solid rgba(240, 246, 0252, 0.1)", marginRight: "1em"}}
+                        clickable
+                    />
+                    <Chip 
+                        label="sort by name"
+                        onClick={() => {
+                            setSortByName(!sortByName);
+                            handleSort('name');
+                        }}
+                        icon={sortByName ? <BsCheck2 color="white" /> : <></>}
+                        disabled={sortByPrice ? true : false}
+                        style={{color: 'white', border: "1px solid rgba(240, 246, 0252, 0.1)"}}
+                        clickable
+                    />
+                </div>
             </div>
             {filteredItems && filteredItems.map((item, i) => 
                 <ItemCard 

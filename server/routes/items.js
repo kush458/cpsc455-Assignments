@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var helpers = require('../utils/helpers');
 const { v4: uuid } = require('uuid');
 
 let item_list = [
     {
-        "id": "id1",
+        "id": uuid(),
         "name": "Puppy",
         "price": 100000.0,
         "imageURL": "https://www.vets4pets.com/siteassets/species/dog/puppy/labrador-puppy-happy.jpg?w=585&scale=down",
@@ -72,6 +73,24 @@ router.patch('/:itemId', (req, res, next) => {
   item_list[itemIdx] = {...item_list[itemIdx], ...req.body};
 
   res.status(200).send(item_list[itemIdx]);
+})
+
+/**
+ * GET sorted items
+ */
+router.get('/sorted', (req, res, next) => {
+  const sorted = [...item_list];
+
+  if (req.query.by === 'price') {
+    sorted.sort(helpers.sortByPrice);
+    res.status(200).send(sorted);
+  } else if (req.query.by === 'name') {
+    sorted.sort(helpers.sortByName);
+    res.status(200).send(sorted);
+  } else {
+    res.status(400).send('Bad request, please check query params');
+  }
+
 })
 
 module.exports = router;

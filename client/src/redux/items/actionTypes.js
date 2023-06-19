@@ -3,4 +3,5 @@ export const actionTypes = {
     ADD_ITEM: 'items/addItem',
     DELETE_ITEM: 'items/deleteItem',
     EDIT_ITEM: 'items/editItem',
+    SORT_ITEMS: 'items/sortItems',
 }

@@ -55,9 +55,22 @@ const editItem = async (itemInfo) => {
     return response;
 }
 
+const sortItems = async (criterion) => {
+    const response = fetch(`http://localhost:3000/items/sorted?by=${criterion}`, {
+        method: 'GET'
+    })
+        .then(res => res.json())
+        .catch(err => {
+            throw new Error(err);
+        });
+
+    return response;
+}
+
 export default {
     getItems,
     addItem,
     deleteItem,
     editItem,
+    sortItems,
 };

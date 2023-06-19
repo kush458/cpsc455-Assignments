@@ -28,4 +28,11 @@ export const editItemAsync = createAsyncThunk(
     async (item) => {
         return await ItemService.editItem(item);
     }
-)
+);
+
+export const sortItemsAsync = createAsyncThunk(
+    actionTypes.SORT_ITEMS,
+    async (criterion) => {
+        return await ItemService.sortItems(criterion);
+    }
+);

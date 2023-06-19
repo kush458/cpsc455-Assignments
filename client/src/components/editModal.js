@@ -4,7 +4,8 @@ import { editItem } from "../redux/items/reducer";
 import { editItemAsync } from "../redux/items/thunks";
 
 const EditModal = (props) => {
-    const item = useSelector(state => state.items.item_list[props.itemIndex]);
+    const items = useSelector(state => state.items.item_list);
+    const item = items.find(i => i.id === props.itemId);
     const dispatch = useDispatch();
 
     const initialState = item ? {
