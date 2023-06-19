@@ -58,13 +58,9 @@ const ItemCard = (props) => {
                     </div>
                 </div>
                 {
-                    !props.searching ? (
-                        <button id="deleteButton" onClick={() => {
-                            setViewForm(true);
-                        }}>✎</button>
-                    ) : (
-                        <></>
-                    ) 
+                    <button id="deleteButton" onClick={() => {
+                        setViewForm(true);
+                    }}>✎</button>
                 }
                 <button style={{right: "50px"}} id="deleteButton" onClick={handleDelete}>🗑️</button>
             </div>
@@ -80,7 +76,6 @@ const ItemCard = (props) => {
                 viewForm={viewForm}
                 name={props.name}
                 itemId={props.itemId}
-                itemIndex={props.itemIndex}
                 setViewForm={setViewForm}
             />
         </>

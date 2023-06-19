@@ -39,7 +39,6 @@
   display: flex;
   background: #1c1d1c;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -314,10 +313,6 @@ input:focus {
   border-radius: 15px;
   margin-bottom: 2.5%;
   transition: 0.2s;
-}
-
-.itemCard:active {
-  opacity: 60%;
 }
 
 .itemCard img {

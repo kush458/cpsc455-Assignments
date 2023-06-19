@@ -40,7 +40,7 @@ const Inventory = (props) => {
     return (
         <div className="inventory">
             <div style={{ 
-                display: 'flex', 
+                display: 'flex',
                 flexDirection: 'column', 
                 alignItems: 'center',
                 width: '70%',
@@ -56,9 +56,10 @@ const Inventory = (props) => {
                             setSortByPrice(!sortByPrice);
                             handleSort('price');
                         }}
-                        icon={sortByPrice ? <BsCheck2 color="white" /> : <></>}
+                        icon={sortByPrice ? <BsCheck2 size="0.8em" color="#9ea2ff" /> : <></>}
                         disabled={sortByName ? true : false}
-                        style={{color: 'white', border: "1px solid rgba(240, 246, 0252, 0.1)", marginRight: "1em"}}
+                        size="small"
+                        style={{color: '#9ea2ff', border: "1.5px solid rgba(158, 162, 255, 0.5)", backgroundColor: "rgba(158, 162, 255, 0.1)", marginRight: "1em"}}
                         clickable
                     />
                     <Chip 
@@ -67,22 +68,22 @@ const Inventory = (props) => {
                             setSortByName(!sortByName);
                             handleSort('name');
                         }}
-                        icon={sortByName ? <BsCheck2 color="white" /> : <></>}
+                        icon={sortByName ? <BsCheck2 size="0.8em" color="#9ea2ff" /> : <></>}
                         disabled={sortByPrice ? true : false}
-                        style={{color: 'white', border: "1px solid rgba(240, 246, 0252, 0.1)"}}
+                        size="small"
+                        style={{color: '#9ea2ff', border: "1.5px solid rgba(158, 162, 255, 0.5)", backgroundColor: "rgba(158, 162, 255, 0.1)"}}
                         clickable
                     />
                 </div>
             </div>
             {filteredItems && filteredItems.map((item, i) => 
                 <ItemCard 
-                    key={i}
+                    key={item.id}
                     itemId={item.id}
                     name={item.name}
                     price={item.price}
                     imageURL={item.imageURL}
                     description={item.description} 
-                    itemIndex={i}
                     searching={searchTerm}   
                 />
             )}

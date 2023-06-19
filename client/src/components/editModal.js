@@ -8,19 +8,7 @@ const EditModal = (props) => {
     const item = items.find(i => i.id === props.itemId);
     const dispatch = useDispatch();
 
-    const initialState = item ? {
-        name: item.name,
-        price: item.price,
-        imageURL: item.imageURL,
-        description: item.description,
-    } : {
-        name: '',
-        price: '',
-        imageURL: '',
-        description: '',
-    }
-
-    const [itemInfo, setItemInfo] = useState(initialState);
+    const [itemInfo, setItemInfo] = useState(item);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -30,7 +18,7 @@ const EditModal = (props) => {
 
     const resetForm = (event) => {
         event.preventDefault();
-        setItemInfo(initialState);
+        setItemInfo(item);
     }
 
     return (
