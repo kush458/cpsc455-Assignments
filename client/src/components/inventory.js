@@ -59,7 +59,7 @@ const Inventory = (props) => {
                         icon={sortByPrice ? <BsCheck2 size="0.8em" color="#9ea2ff" /> : <></>}
                         disabled={sortByName ? true : false}
                         size="small"
-                        style={{color: '#9ea2ff', border: "1.5px solid rgba(158, 162, 255, 0.5)", backgroundColor: "rgba(158, 162, 255, 0.1)", marginRight: "1em"}}
+                        style={{color: '#9ea2ff', border: "1px solid rgba(158, 162, 255, 0.5)", backgroundColor: "rgba(158, 162, 255, 0.1)", marginRight: "1em"}}
                         clickable
                     />
                     <Chip 
@@ -71,7 +71,7 @@ const Inventory = (props) => {
                         icon={sortByName ? <BsCheck2 size="0.8em" color="#9ea2ff" /> : <></>}
                         disabled={sortByPrice ? true : false}
                         size="small"
-                        style={{color: '#9ea2ff', border: "1.5px solid rgba(158, 162, 255, 0.5)", backgroundColor: "rgba(158, 162, 255, 0.1)"}}
+                        style={{color: '#9ea2ff', border: "1px solid rgba(158, 162, 255, 0.5)", backgroundColor: "rgba(158, 162, 255, 0.1)"}}
                         clickable
                     />
                 </div>

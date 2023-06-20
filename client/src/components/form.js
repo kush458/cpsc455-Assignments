@@ -29,13 +29,6 @@ const Form = (props) => {
 
     }
 
-    const deleteAll = () => {
-
-        dispatch(deleteAllItems());
-
-    }
-
-
     return (
         <>
             <form id="itemForm" onSubmit={handleSubmit}>
@@ -58,7 +51,6 @@ const Form = (props) => {
                     <button id="clearAllButton" className="formButtons" onClick={clearAll}>Clear all</button>
                 </div>
             </form>
-            <button id="deleteAllButton" onClick={deleteAll}>Delete All Cards</button>
         </>
     );
 }
