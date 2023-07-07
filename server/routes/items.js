@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var helpers = require('../utils/helpers');
 const { v4: uuid } = require('uuid');
+const { addItem, getItems, deleteItem, updateItem, getSortedItems } = require('../controllers/item.controller');
 
 let item_list = [
     {
@@ -31,66 +32,26 @@ let item_list = [
 /**
  *  GET all items
  */
-router.get('/', (req, res, next) => {
-
-  res.status(200).send(item_list);
-
-});
+router.get('/', getItems);
 
 /**
  * CREATE an item
  */
-router.post('/', (req, res, next) => {
-
-  const item = {id: uuid(), ...req.body};
-  item_list.push(item);
-
-  res.status(201).send(item);
-
-});
-
+router.post('/', addItem);
 
 /**
  * DELETE an item
  */
-router.delete('/:itemId', (req, res, next) => {
-
-  const id = req.params.itemId;
-
-  item_list = item_list.filter(item => item.id !== id);
-
-  res.status(204).send({});
-})
+router.delete('/:itemId', deleteItem);
 
 /**
  * UPDATE an item
  */
-router.patch('/:itemId', (req, res, next) => {
-  const id = req.params.itemId;
-
-  var itemIdx = item_list.findIndex(item => item.id === id);
-
-  item_list[itemIdx] = {...item_list[itemIdx], ...req.body};
-
-  res.status(200).send(item_list[itemIdx]);
-})
+router.patch('/:itemId', updateItem);
 
 /**
  * GET sorted items
  */
-router.get('/sorted', (req, res, next) => {
-  const sorted = [...item_list];
-
-  if (req.query.by === 'price') {
-    sorted.sort(helpers.sortByPrice);
-    res.status(200).send(sorted);
-  } else if (req.query.by === 'name') {
-    sorted.sort(helpers.sortByName);
-    res.status(200).send(sorted);
-  } else {
-    res.status(400).send('Bad request, please check query params');
-  }
-
-})
+router.get('/sorted', getSortedItems);
 
 module.exports = router;
