@@ -38,9 +38,9 @@ const deleteItem = async (itemId) => {
 }
 
 const editItem = async (itemInfo) => {
-    const {id, item} = itemInfo;
+    const {item} = itemInfo;
 
-    const response = await fetch(`http://localhost:3000/items/${id}`, {
+    const response = await fetch(`http://localhost:3000/items/${item._id}`, {
         method: 'PATCH',
         headers: {
             'Content-type': 'application/json'

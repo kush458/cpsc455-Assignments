@@ -78,8 +78,8 @@ const Inventory = (props) => {
             </div>
             {filteredItems && filteredItems.map((item, i) => 
                 <ItemCard 
-                    key={item.id}
-                    itemId={item.id}
+                    key={item._id}
+                    itemId={item._id}
                     name={item.name}
                     price={item.price}
                     imageURL={item.imageURL}

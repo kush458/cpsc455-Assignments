@@ -48,7 +48,7 @@ const itemSlice = createSlice({
             })
             .addCase(deleteItemAsync.fulfilled, (state, action) => {
                 state.deleteItem = REQUEST_STATE.FULFILLED;
-                state.item_list = state.item_list.filter(item => item.id !== action.payload);
+                state.item_list = state.item_list.filter(item => item._id !== action.payload);
             })
             .addCase(deleteItemAsync.rejected, (state, action) => {
                 state.deleteItem = REQUEST_STATE.REJECETD;
@@ -61,7 +61,7 @@ const itemSlice = createSlice({
             .addCase(editItemAsync.fulfilled, (state, action) => {
                 state.editItem = REQUEST_STATE.FULFILLED;
 
-                const idx = state.item_list.findIndex(item => item.id === action.payload.id);
+                const idx = state.item_list.findIndex(item => item._id === action.payload._id);
                 state.item_list[idx] = action.payload;
             })
             .addCase(editItemAsync.rejected, (state, action) => {

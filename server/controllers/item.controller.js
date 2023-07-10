@@ -42,7 +42,8 @@ const updateItem = async (req, res, next) => {
     const id = req.params.itemId;
 
     await Item.findOneAndUpdate({_id: id}, req.body, {
-        new: true
+        new: true,
+        upsert: false
     }).then((item) => {
         res.status(200).send(item);
     }).catch((err) => {

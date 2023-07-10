@@ -5,14 +5,14 @@ import { editItemAsync } from "../redux/items/thunks";
 
 const EditModal = (props) => {
     const items = useSelector(state => state.items.item_list);
-    const item = items.find(i => i.id === props.itemId);
+    const item = items.find(i => i._id === props.itemId);
     const dispatch = useDispatch();
 
     const [itemInfo, setItemInfo] = useState(item);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(editItemAsync({id: props.itemId, item: itemInfo}));
+        dispatch(editItemAsync({item: itemInfo}));
         props.setViewForm(false);
     }
 
