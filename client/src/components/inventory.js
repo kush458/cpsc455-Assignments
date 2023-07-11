@@ -83,7 +83,8 @@ const Inventory = (props) => {
                     name={item.name}
                     price={item.price}
                     imageURL={item.imageURL}
-                    description={item.description} 
+                    description={item.description}
+                    date={item.createdAt} 
                     searching={searchTerm}   
                 />
             )}
